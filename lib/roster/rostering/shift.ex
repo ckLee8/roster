@@ -16,6 +16,6 @@ defmodule Roster.Rostering.Shift do
   def changeset(%Shift{} = shift, attrs) do
     shift
     |> cast(attrs, [:start_time, :end_time])
-    |> validate_required([:start_time, :end_time])
+    |> validate_required([:start_time, :end_time, :user_id])
   end
 end
