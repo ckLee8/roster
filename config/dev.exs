@@ -6,14 +6,6 @@ use Mix.Config
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with brunch.io to recompile .js and .css sources.
-config :roster, RosterWeb.Endpoint,
-  http: [port: 4000],
-  debug_errors: true,
-  code_reloader: true,
-  check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../assets", __DIR__)]]
-
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
@@ -24,6 +16,13 @@ config :roster, RosterWeb.Endpoint,
 #
 # The `http:` config above can be replaced with:
 #
+config :roster, RosterWeb.Endpoint,
+http: [port: 4000],
+debug_errors: true,
+code_reloader: true,
+check_origin: false,
+watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
+                  cd: Path.expand("../assets", __DIR__)]]
 #     https: [port: 4000, keyfile: "priv/server.key", certfile: "priv/server.pem"],
 #
 # If desired, both `http:` and `https:` keys can be
@@ -50,9 +49,10 @@ config :phoenix, :stacktrace_depth, 20
 
 # Configure your database
 config :roster, Roster.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "roster_dev",
-  hostname: "localhost",
-  pool_size: 10
+adapter: Ecto.Adapters.Postgres,
+username: "postgres",
+password: "postgres",
+database: "roster_dev",
+hostname: "localhost",
+port: 6543,
+pool_size: 10
